@@ -51,12 +51,15 @@ The Resource Pack owns client-side presentation:
 - Keep conservative `1.21.0` minimum engine and entity formats because these load
   successfully on the target iOS client.
 - Include a module-level `description` in each manifest.
-- Do not use a cross-pack manifest dependency until it has been tested separately.
-- Use fresh UUIDs for milestone releases because iOS may reject same-UUID updates as
-  duplicate packs.
+- Keep the Behavior Pack dependency UUID and version aligned with the Resource Pack
+  header.
+- Preserve pack header and module UUIDs across releases. Increment manifest versions
+  when publishing an update; change UUIDs only when intentionally creating separate
+  packs.
 - Provide separate `.mcpack` files for troubleshooting and a combined `.mcaddon` for
   normal distribution. The `.mcaddon` must contain the completed `.mcpack` archives,
   not the raw Behavior Pack and Resource Pack folders.
+- Use the repository validation and packaging scripts for release archives.
 - Do not use `minecraft:spawn_egg_interaction` unless the entity also supports
   offspring. The Creative spawn egg only requires `is_spawnable` and the client
   entity's `spawn_egg` definition.
@@ -132,6 +135,9 @@ jurassic-mod/
 │       └── en_US.lang
 ├── art/
 │   └── trex_texture.svg
+├── scripts/
+│   ├── validate.sh
+│   └── package.sh
 ├── dist/
 ├── PLAN.md
 └── README.md

@@ -63,3 +63,20 @@ testing wild player targeting or owner-defense behavior.
 
 If importing or spawning fails, enable the Content Log in Minecraft settings and
 check it for malformed JSON, missing dependencies, or missing client resources.
+
+## Build
+
+Validate the source packs without creating archives:
+
+```sh
+./scripts/validate.sh
+```
+
+Create and validate both `.mcpack` files and the combined `.mcaddon`:
+
+```sh
+./scripts/package.sh milestone_4_1
+```
+
+The release name controls the generated filenames in `dist/`. Packaging preserves
+the UUIDs in the manifests; increment manifest versions when preparing an update.

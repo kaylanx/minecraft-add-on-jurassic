@@ -10,6 +10,7 @@ Structure:
 - `behavior_pack/` — gameplay and entity behavior
 - `resource_pack/` — models, textures and animations
 - `art/` — source artwork
+- `scripts/` — validation and release packaging
 - `dist/` — generated packages
 
 ## Bedrock Rules
