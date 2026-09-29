@@ -1,0 +1,40 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "jurassic:trex",
+      "materials": {
+        "default": "entity"
+      },
+      "textures": {
+        "default": "textures/entity/trex"
+      },
+      "geometry": {
+        "default": "geometry.trex"
+      },
+      "animations": {
+        "idle": "animation.trex.idle",
+        "walk": "animation.trex.walk",
+        "run": "animation.trex.run",
+        "attack": "animation.trex.attack",
+        "movement": "controller.animation.trex.movement",
+        "combat": "controller.animation.trex.combat",
+        "look_at_target": "animation.common.look_at_target"
+      },
+      "scripts": {
+        "animate": [
+          "movement",
+          "combat",
+          "look_at_target"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "base_color": "#426B35",
+        "overlay_color": "#1D2418"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Jurassic T-Rex Behavior Pack (Milestone 3)",
+    "description": "Milestone 3 predator AI and combat for the Jurassic T-Rex Add-On",
+    "uuid": "97cbab06-2e18-4e34-97a3-18be03f5afc4",
+    "version": [3, 0, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "description": "Jurassic T-Rex behavior data",
+      "type": "data",
+      "uuid": "ff330089-2cda-417f-867f-102bb8f1d036",
+      "version": [3, 0, 0]
+    }
+  ]
+}

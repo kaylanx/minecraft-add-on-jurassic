@@ -1,0 +1,70 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.trex.movement": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": ["idle"],
+          "transitions": [
+            {
+              "run": "query.has_target && query.modified_move_speed > 0.01"
+            },
+            {
+              "walk": "query.modified_move_speed > 0.01"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "walk": {
+          "animations": ["walk"],
+          "transitions": [
+            {
+              "run": "query.has_target && query.modified_move_speed > 0.01"
+            },
+            {
+              "idle": "query.modified_move_speed <= 0.01"
+            },
+            {
+              "run": "query.modified_move_speed > 0.45"
+            }
+          ],
+          "blend_transition": 0.15
+        },
+        "run": {
+          "animations": ["run"],
+          "transitions": [
+            {
+              "idle": "query.modified_move_speed <= 0.01"
+            },
+            {
+              "walk": "!query.has_target && query.modified_move_speed > 0.01"
+            }
+          ],
+          "blend_transition": 0.1
+        }
+      }
+    },
+    "controller.animation.trex.combat": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "attacking": "query.is_delayed_attacking"
+            }
+          ]
+        },
+        "attacking": {
+          "animations": ["attack"],
+          "transitions": [
+            {
+              "default": "!query.is_delayed_attacking"
+            }
+          ],
+          "blend_transition": 0.05
+        }
+      }
+    }
+  }
+}
