@@ -260,7 +260,7 @@ combat until delayed-attack support can be isolated and tested independently.
 
 ## Milestone 4: Taming And Owner Behavior
 
-**Status:** Planned.
+**Status:** Implemented; pending verification on iOS.
 
 ### Build
 
@@ -272,12 +272,15 @@ combat until delayed-attack support can be isolated and tested independently.
 - Follow the owner.
 - Defend the owner and assist with the owner's targets.
 - Allow meat to heal a tamed T-Rex.
+- When the player crouches and clicks on a tamed T-Rex, it should sit down.
 
 ### Components
 
 - `minecraft:tameable`
 - `minecraft:is_tamed`
 - `minecraft:healable`
+- `minecraft:sittable`
+- `minecraft:behavior.stay_while_sitting`
 - `minecraft:behavior.follow_owner`
 - `minecraft:behavior.owner_hurt_by_target`
 - `minecraft:behavior.owner_hurt_target`
@@ -294,6 +297,7 @@ combat until delayed-attack support can be isolated and tested independently.
 - Tame using the configured meat.
 - Verify item consumption and tame probability.
 - Confirm wild targeting stops immediately after taming.
+- Confirm it can sit when tamed.
 - Walk away and verify following behavior.
 - Save and reload to verify owner persistence.
 - Verify defense when the owner is attacked.
@@ -304,8 +308,14 @@ combat until delayed-attack support can be isolated and tested independently.
 
 - AI priorities must prevent following, combat, and wandering from fighting each
   other.
-- Teleport-to-owner behavior may look awkward for a large dinosaur and may need to
-  be disabled or tuned.
+
+### Implementation Notes
+
+- Raw beef, porkchops, chicken, mutton, and rabbit tame with a 25% chance per item.
+- Those raw meats restore between 6 and 10 health after taming.
+- Owner defense and sitting have higher priorities than following and wandering.
+- Owner teleporting is disabled to avoid visibly moving the large model through
+  terrain.
 
 ## Milestone 5: Riding And Player Control
 

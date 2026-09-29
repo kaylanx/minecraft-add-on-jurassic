@@ -1,9 +1,9 @@
 {
   "format_version": 2,
   "header": {
-    "name": "Jurassic T-Rex Resource Pack (Milestone 3 Safe)",
-    "description": "Milestone 3 combat resources for the Jurassic T-Rex Add-On",
-    "uuid": "98a1e245-b8cd-48f2-a5a7-23998d7762d1",
+    "name": "Jurassic T-Rex Resource Pack (Milestone 4)",
+    "description": "Milestone 4 client resources for the Jurassic T-Rex Add-On",
+    "uuid": "6a0a1715-4d06-45bf-bf37-67e147409f7a",
     "version": [1, 0, 0],
     "min_engine_version": [1, 21, 0]
   },
@@ -11,7 +11,7 @@
     {
       "description": "Jurassic T-Rex client resources",
       "type": "resources",
-      "uuid": "1fd792a6-48df-44bd-a6ab-3345594e6986",
+      "uuid": "e9d4bf8f-c237-4a5e-910b-debb2c3b2bf4",
       "version": [1, 0, 0]
     }
   ]

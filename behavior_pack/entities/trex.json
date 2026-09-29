@@ -7,6 +7,130 @@
       "is_spawnable": true,
       "is_summonable": true
     },
+    "component_groups": {
+      "jurassic:trex_wild": {
+        "minecraft:tameable": {
+          "probability": 0.25,
+          "tame_items": [
+            "beef",
+            "porkchop",
+            "chicken",
+            "muttonRaw",
+            "rabbit"
+          ],
+          "tame_event": {
+            "event": "jurassic:on_tame",
+            "target": "self"
+          }
+        },
+        "minecraft:behavior.hurt_by_target": {
+          "priority": 1
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": true,
+          "reselect_targets": true,
+          "entity_types": [
+            {
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "cow"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "pig"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "sheep"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "chicken"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "horse"
+                  }
+                ]
+              },
+              "max_dist": 24
+            }
+          ]
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 3,
+          "reach_multiplier": 1.5,
+          "speed_multiplier": 1.35,
+          "track_target": true
+        }
+      },
+      "jurassic:trex_tamed": {
+        "minecraft:is_tamed": {},
+        "minecraft:healable": {
+          "items": [
+            {
+              "item": "beef",
+              "heal_amount": 10
+            },
+            {
+              "item": "porkchop",
+              "heal_amount": 10
+            },
+            {
+              "item": "chicken",
+              "heal_amount": 6
+            },
+            {
+              "item": "muttonRaw",
+              "heal_amount": 8
+            },
+            {
+              "item": "rabbit",
+              "heal_amount": 8
+            }
+          ]
+        },
+        "minecraft:sittable": {},
+        "minecraft:behavior.stay_while_sitting": {
+          "priority": 1
+        },
+        "minecraft:behavior.owner_hurt_by_target": {
+          "priority": 2
+        },
+        "minecraft:behavior.owner_hurt_target": {
+          "priority": 3
+        },
+        "minecraft:behavior.hurt_by_target": {
+          "priority": 4
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 5,
+          "reach_multiplier": 1.5,
+          "speed_multiplier": 1.35,
+          "track_target": true
+        },
+        "minecraft:behavior.follow_owner": {
+          "priority": 6,
+          "speed_multiplier": 1.1,
+          "start_distance": 10,
+          "stop_distance": 4,
+          "can_teleport": false
+        }
+      }
+    },
     "components": {
       "minecraft:type_family": {
         "family": ["trex", "dinosaur", "monster", "mob"]
@@ -45,70 +169,38 @@
       "minecraft:behavior.float": {
         "priority": 0
       },
-      "minecraft:behavior.hurt_by_target": {
-        "priority": 1
-      },
-      "minecraft:behavior.nearest_attackable_target": {
-        "priority": 2,
-        "must_see": true,
-        "reselect_targets": true,
-        "entity_types": [
-          {
-            "filters": {
-              "any_of": [
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "player"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "cow"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "pig"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "sheep"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "chicken"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "horse"
-                }
-              ]
-            },
-            "max_dist": 24
-          }
-        ]
-      },
-      "minecraft:behavior.melee_attack": {
-        "priority": 3,
-        "reach_multiplier": 1.5,
-        "speed_multiplier": 1.35,
-        "track_target": true
-      },
       "minecraft:behavior.random_stroll": {
-        "priority": 6,
+        "priority": 8,
         "speed_multiplier": 0.8
       },
       "minecraft:behavior.look_at_player": {
-        "priority": 7,
+        "priority": 9,
         "look_distance": 8.0,
         "probability": 0.04
       },
       "minecraft:behavior.random_look_around": {
-        "priority": 8
+        "priority": 10
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "jurassic:trex_wild"
+          ]
+        }
+      },
+      "jurassic:on_tame": {
+        "remove": {
+          "component_groups": [
+            "jurassic:trex_wild"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "jurassic:trex_tamed"
+          ]
+        }
       }
     }
   }
