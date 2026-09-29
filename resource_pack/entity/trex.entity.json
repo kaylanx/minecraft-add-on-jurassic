@@ -18,13 +18,11 @@
         "run": "animation.trex.run",
         "attack": "animation.trex.attack",
         "movement": "controller.animation.trex.movement",
-        "combat": "controller.animation.trex.combat",
         "look_at_target": "animation.common.look_at_target"
       },
       "scripts": {
         "animate": [
           "movement",
-          "combat",
           "look_at_target"
         ]
       },

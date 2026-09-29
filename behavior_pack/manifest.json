@@ -1,18 +1,24 @@
 {
   "format_version": 2,
   "header": {
-    "name": "Jurassic T-Rex Behavior Pack (Milestone 3)",
+    "name": "Jurassic T-Rex Behavior Pack (Milestone 3 Safe)",
     "description": "Milestone 3 predator AI and combat for the Jurassic T-Rex Add-On",
-    "uuid": "97cbab06-2e18-4e34-97a3-18be03f5afc4",
-    "version": [3, 0, 0],
+    "uuid": "e4b76b6c-aefa-485f-873b-003f1853227a",
+    "version": [1, 0, 0],
     "min_engine_version": [1, 21, 0]
   },
   "modules": [
     {
       "description": "Jurassic T-Rex behavior data",
       "type": "data",
-      "uuid": "ff330089-2cda-417f-867f-102bb8f1d036",
-      "version": [3, 0, 0]
+      "uuid": "1a5b99db-d33c-4827-b1ac-f71572c61cc9",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "98a1e245-b8cd-48f2-a5a7-23998d7762d1",
+      "version": [1, 0, 0]
     }
   ]
 }

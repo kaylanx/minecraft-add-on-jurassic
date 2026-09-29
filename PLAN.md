@@ -55,7 +55,8 @@ The Resource Pack owns client-side presentation:
 - Use fresh UUIDs for milestone releases because iOS may reject same-UUID updates as
   duplicate packs.
 - Provide separate `.mcpack` files for troubleshooting and a combined `.mcaddon` for
-  normal distribution.
+  normal distribution. The `.mcaddon` must contain the completed `.mcpack` archives,
+  not the raw Behavior Pack and Resource Pack folders.
 - Do not use `minecraft:spawn_egg_interaction` unless the entity also supports
   offspring. The Creative spawn egg only requires `is_spawnable` and the client
   entity's `spawn_egg` definition.
@@ -212,7 +213,7 @@ Folders and files are added only when their milestone needs them.
 
 ## Milestone 3: Wild Predator AI And Combat
 
-**Status:** Implemented; awaiting final in-game combat verification.
+**Status:** Compatible baseline verified on iOS; gameplay balancing remains.
 
 ### Build
 
@@ -221,10 +222,9 @@ Folders and files are added only when their milestone needs them.
 - Retaliate when attacked, except against other dinosaurs.
 - Pursue targets at increased speed.
 - Deal 14 melee damage with 100 health and 60% knockback resistance.
-- Use `minecraft:behavior.delayed_attack` so bite damage lands during the attack
-  animation.
-- Use `query.has_target` for the run animation and
-  `query.is_delayed_attacking` for the bite animation.
+- Start with `minecraft:behavior.melee_attack` for broad compatibility. Delayed
+  attack synchronization will be reintroduced only after the baseline combat pack
+  is verified on the target iOS client.
 - Add `/function trex_prey` for safe Creative-mode testing.
 
 ### Files
@@ -237,8 +237,7 @@ Folders and files are added only when their milestone needs them.
 ### Test
 
 - In Creative mode, run `/function trex_spawn` and `/function trex_prey`.
-- Confirm target acquisition, pursuit, run animation, attack range, bite animation,
-  and damage timing.
+- Confirm target acquisition, pursuit, attack range, and damage.
 - In Survival mode, verify player targeting and practical damage.
 - Attack the T-Rex and verify retaliation.
 - Spawn two T-Rexes and verify they do not target each other by default.
@@ -249,6 +248,15 @@ Folders and files are added only when their milestone needs them.
 - Attack reach may need adjustment to match the model's long head.
 - The large entity may struggle with pathfinding in forests and confined terrain.
 - Target families may require refinement as more mobs are tested.
+
+### Compatibility Finding
+
+The initial Milestone 3 build used `minecraft:behavior.delayed_attack` together
+with a client animation controller driven by `query.is_delayed_attacking`. On the
+target iOS client, that pair caused the generic pack-loading warning without a
+useful Content Log error. Reverting to `minecraft:behavior.melee_attack` and the
+verified Milestone 2 resource controllers removed the warning. Keep standard melee
+combat until delayed-attack support can be isolated and tested independently.
 
 ## Milestone 4: Taming And Owner Behavior
 
