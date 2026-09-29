@@ -8,6 +8,9 @@
           "animations": ["idle"],
           "transitions": [
             {
+              "sitting": "query.property('jurassic:is_sitting')"
+            },
+            {
               "walk": "query.modified_move_speed > 0.01"
             }
           ],
@@ -16,6 +19,9 @@
         "walk": {
           "animations": ["walk"],
           "transitions": [
+            {
+              "sitting": "query.property('jurassic:is_sitting')"
+            },
             {
               "idle": "query.modified_move_speed <= 0.01"
             },
@@ -29,6 +35,9 @@
           "animations": ["run"],
           "transitions": [
             {
+              "sitting": "query.property('jurassic:is_sitting')"
+            },
+            {
               "idle": "query.modified_move_speed <= 0.01"
             },
             {
@@ -36,6 +45,15 @@
             }
           ],
           "blend_transition": 0.1
+        },
+        "sitting": {
+          "animations": ["sit"],
+          "transitions": [
+            {
+              "idle": "!query.property('jurassic:is_sitting')"
+            }
+          ],
+          "blend_transition": 0.25
         }
       }
     }

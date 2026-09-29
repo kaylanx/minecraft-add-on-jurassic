@@ -1,18 +1,18 @@
 {
   "format_version": 2,
   "header": {
-    "name": "Jurassic T-Rex Resource Pack (Milestone 4)",
-    "description": "Milestone 4 client resources for the Jurassic T-Rex Add-On",
-    "uuid": "6a0a1715-4d06-45bf-bf37-67e147409f7a",
-    "version": [1, 0, 0],
+    "name": "Jurassic T-Rex Resource Pack (Milestone 4.1)",
+    "description": "Milestone 4.1 client resources with a visible sitting pose",
+    "uuid": "f4de24c0-f9b3-48ce-9c8e-65e65886a1cb",
+    "version": [1, 1, 0],
     "min_engine_version": [1, 21, 0]
   },
   "modules": [
     {
       "description": "Jurassic T-Rex client resources",
       "type": "resources",
-      "uuid": "e9d4bf8f-c237-4a5e-910b-debb2c3b2bf4",
-      "version": [1, 0, 0]
+      "uuid": "03163bb4-2cee-495a-9d37-a87443a2c1e3",
+      "version": [1, 1, 0]
     }
   ]
 }

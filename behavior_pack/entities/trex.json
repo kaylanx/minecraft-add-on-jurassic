@@ -5,7 +5,14 @@
       "identifier": "jurassic:trex",
       "spawn_category": "creature",
       "is_spawnable": true,
-      "is_summonable": true
+      "is_summonable": true,
+      "properties": {
+        "jurassic:is_sitting": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        }
+      }
     },
     "component_groups": {
       "jurassic:trex_wild": {
@@ -75,6 +82,10 @@
           "reach_multiplier": 1.5,
           "speed_multiplier": 1.35,
           "track_target": true
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 8,
+          "speed_multiplier": 0.8
         }
       },
       "jurassic:trex_tamed": {
@@ -103,10 +114,76 @@
             }
           ]
         },
-        "minecraft:sittable": {},
-        "minecraft:behavior.stay_while_sitting": {
-          "priority": 1
-        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "all_slots_empty",
+                      "subject": "other",
+                      "value": "hand"
+                    },
+                    {
+                      "test": "bool_property",
+                      "subject": "self",
+                      "domain": "jurassic:is_sitting",
+                      "value": false
+                    }
+                  ]
+                },
+                "event": "jurassic:sit",
+                "target": "self"
+              },
+              "interact_text": "action.interact.sit"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_owner",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "is_sneak_held",
+                      "subject": "other",
+                      "value": true
+                    },
+                    {
+                      "test": "all_slots_empty",
+                      "subject": "other",
+                      "value": "hand"
+                    },
+                    {
+                      "test": "bool_property",
+                      "subject": "self",
+                      "domain": "jurassic:is_sitting",
+                      "value": true
+                    }
+                  ]
+                },
+                "event": "jurassic:stand",
+                "target": "self"
+              },
+              "interact_text": "action.interact.stand"
+            }
+          ]
+        }
+      },
+      "jurassic:trex_tamed_active": {
         "minecraft:behavior.owner_hurt_by_target": {
           "priority": 2
         },
@@ -128,6 +205,15 @@
           "start_distance": 10,
           "stop_distance": 4,
           "can_teleport": false
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 8,
+          "speed_multiplier": 0.8
+        }
+      },
+      "jurassic:trex_tamed_sitting": {
+        "minecraft:movement": {
+          "value": 0.0
         }
       }
     },
@@ -169,10 +255,6 @@
       "minecraft:behavior.float": {
         "priority": 0
       },
-      "minecraft:behavior.random_stroll": {
-        "priority": 8,
-        "speed_multiplier": 0.8
-      },
       "minecraft:behavior.look_at_player": {
         "priority": 9,
         "look_distance": 8.0,
@@ -198,8 +280,42 @@
         },
         "add": {
           "component_groups": [
-            "jurassic:trex_tamed"
+            "jurassic:trex_tamed",
+            "jurassic:trex_tamed_active"
           ]
+        },
+        "set_property": {
+          "jurassic:is_sitting": false
+        }
+      },
+      "jurassic:sit": {
+        "remove": {
+          "component_groups": [
+            "jurassic:trex_tamed_active"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "jurassic:trex_tamed_sitting"
+          ]
+        },
+        "set_property": {
+          "jurassic:is_sitting": true
+        }
+      },
+      "jurassic:stand": {
+        "remove": {
+          "component_groups": [
+            "jurassic:trex_tamed_sitting"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "jurassic:trex_tamed_active"
+          ]
+        },
+        "set_property": {
+          "jurassic:is_sitting": false
         }
       }
     }

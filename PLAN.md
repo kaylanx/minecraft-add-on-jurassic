@@ -279,8 +279,8 @@ combat until delayed-attack support can be isolated and tested independently.
 - `minecraft:tameable`
 - `minecraft:is_tamed`
 - `minecraft:healable`
-- `minecraft:sittable`
-- `minecraft:behavior.stay_while_sitting`
+- Synchronized `jurassic:is_sitting` entity property
+- Owner- and crouch-filtered `minecraft:interact`
 - `minecraft:behavior.follow_owner`
 - `minecraft:behavior.owner_hurt_by_target`
 - `minecraft:behavior.owner_hurt_target`
@@ -316,6 +316,11 @@ combat until delayed-attack support can be isolated and tested independently.
 - Owner defense and sitting have higher priorities than following and wandering.
 - Owner teleporting is disabled to avoid visibly moving the large model through
   terrain.
+- Native `minecraft:sittable` exposes its prompt even when the owner is not
+  crouching. Milestone 4.1 instead uses a persistent custom property and filtered
+  empty-hand interactions so Sit/Stand is offered only while the owner crouches.
+- Sitting swaps out active movement and combat goals and drives a dedicated client
+  animation through the synchronized property.
 
 ## Milestone 5: Riding And Player Control
 

@@ -54,6 +54,45 @@
         }
       }
     },
+    "animation.trex.sit": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "position": [0, -8, 4],
+          "rotation": [-12, 0, 0]
+        },
+        "chest": {
+          "rotation": [-6, 0, 0]
+        },
+        "neck": {
+          "rotation": [12, 0, 0]
+        },
+        "head": {
+          "rotation": [-6, 0, 0]
+        },
+        "left_leg": {
+          "rotation": [22, 0, -8]
+        },
+        "right_leg": {
+          "rotation": [22, 0, 8]
+        },
+        "left_arm": {
+          "rotation": [-35, 0, -10]
+        },
+        "right_arm": {
+          "rotation": [-35, 0, 10]
+        },
+        "tail_base": {
+          "rotation": [12, 0, 0]
+        },
+        "tail_mid": {
+          "rotation": [8, 0, 0]
+        },
+        "tail_tip": {
+          "rotation": [5, 0, 0]
+        }
+      }
+    },
     "animation.trex.walk": {
       "loop": true,
       "animation_length": 1.0,
