@@ -266,7 +266,8 @@ combat until delayed-attack support can be isolated and tested independently.
 
 ## Milestone 4: Taming And Owner Behavior
 
-**Status:** Implemented; pending verification on iOS.
+**Status:** Milestone 4.1 verified on iOS except for the pending two-player
+ownership/follow test. Milestone 4.2 sitting-pose update is pending iOS verification.
 
 ### Build
 
@@ -327,6 +328,16 @@ combat until delayed-attack support can be isolated and tested independently.
   empty-hand interactions so Sit/Stand is offered only while the owner crouches.
 - Sitting swaps out active movement and combat goals and drives a dedicated client
   animation through the synchronized property.
+
+### Milestone 4.2 Sitting Pose
+
+- Preserve the existing `left_leg` and `right_leg` bones while moving each foot into
+  a new child bone.
+- Lower the hips and tail while raising the chest and head.
+- Fold the legs forward and counter-rotate the articulated feet so they remain
+  planted instead of making the whole model appear to crouch.
+- Verify the seated silhouette, foot placement, ground clipping, transitions, and
+  normal idle, walk, and run animations on iOS.
 
 ## Milestone 5: Riding And Player Control
 
