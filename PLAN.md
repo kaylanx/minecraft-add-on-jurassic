@@ -266,8 +266,8 @@ combat until delayed-attack support can be isolated and tested independently.
 
 ## Milestone 4: Taming And Owner Behavior
 
-**Status:** Milestone 4.1 verified on iOS except for the pending two-player
-ownership/follow test. Milestone 4.2 sitting-pose update is pending iOS verification.
+**Status:** Complete and verified on iOS through Milestone 4.3, including
+two-player ownership and following.
 
 ### Build
 
@@ -338,6 +338,27 @@ ownership/follow test. Milestone 4.2 sitting-pose update is pending iOS verifica
   planted instead of making the whole model appear to crouch.
 - Verify the seated silhouette, foot placement, ground clipping, transitions, and
   normal idle, walk, and run animations on iOS.
+
+### Milestone 4.3 Movement Restoration
+
+- Milestone 4.2 set `minecraft:movement` to `0.0` in the sitting component group.
+  On iOS, removing that group did not reliably restore movement, leaving the T-Rex
+  unable to wander or follow after standing.
+- Sitting now stops locomotion solely by removing the active movement-producing AI
+  goals.
+- Wild and active-tamed groups explicitly apply movement speed `0.25`, ensuring that
+  the stand event recomposes both movement speed and owner behavior.
+- Repeatedly sit and stand, then verify wandering, following, and owner defense.
+
+### Verification
+
+- Taming, healing, crouch-gated Sit/Stand interactions, and the articulated sitting
+  pose are verified on iOS.
+- Movement, wandering, following, and owner defense resume after repeated Sit/Stand
+  cycles.
+- Two-player testing confirmed that ownership, following, Sit/Stand control, owner
+  defense, and owner attack assistance remain assigned to the correct player.
+- Ownership and sitting state persist after saving and reopening the world.
 
 ## Milestone 5: Riding And Player Control
 

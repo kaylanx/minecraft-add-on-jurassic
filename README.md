@@ -1,17 +1,17 @@
 # Jurassic T-Rex Add-On
 
-Milestone 4.2 adds a more clearly seated, articulated pose to the taming, healing,
-crouch-gated sitting, following, and owner-defense behavior from Milestone 4.1.
+Milestone 4.3 fixes movement and following after a seated T-Rex is told to stand,
+while retaining the articulated sitting pose from Milestone 4.2.
 
 ## Install On iOS
 
-1. Transfer `dist/jurassic_trex_milestone_4_2.mcaddon` to the iOS device.
+1. Transfer `dist/jurassic_trex_milestone_4_3.mcaddon` to the iOS device.
 2. In the Files app, open the file with Minecraft.
 3. Wait for Minecraft to report that both packs imported successfully. Separate
-   Milestone 4.2 `.mcpack` files are also provided if troubleshooting is needed.
+   Milestone 4.3 `.mcpack` files are also provided if troubleshooting is needed.
 4. Create a new world with cheats enabled.
-5. Activate **Jurassic T-Rex Behavior Pack (Milestone 4.2)** under Behavior Packs.
-6. Verify **Jurassic T-Rex Resource Pack (Milestone 4.2)** is active.
+5. Activate **Jurassic T-Rex Behavior Pack (Milestone 4.3)** under Behavior Packs.
+6. Verify **Jurassic T-Rex Resource Pack (Milestone 4.3)** is active.
 7. Deactivate earlier Jurassic packs because they use the same entity identifier.
 
 ## Test
@@ -46,6 +46,8 @@ Verify that:
 - Sitting lowers the hips, raises the chest, folds the legs, plants the articulated
   feet, and rests the tail behind the body.
 - Sitting prevents following, combat, and wandering until it is told to stand.
+- After standing, it resumes wandering and follows its owner again. Repeat the
+  sit/stand cycle several times to verify movement is restored every time.
 - Ownership and sitting state persist after saving and reopening the world.
 - It has the name `T-Rex` in command output and death messages.
 - A green and dark spawn egg named `Spawn T-Rex` is available in Creative mode.
@@ -76,7 +78,7 @@ Validate the source packs without creating archives:
 Create and validate both `.mcpack` files and the combined `.mcaddon`:
 
 ```sh
-./scripts/package.sh milestone_4_2
+./scripts/package.sh milestone_4_3
 ```
 
 The release name controls the generated filenames in `dist/`. Packaging preserves
