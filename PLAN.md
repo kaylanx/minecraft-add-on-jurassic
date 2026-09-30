@@ -362,7 +362,7 @@ two-player ownership and following.
 
 ## Milestone 5: Riding And Player Control
 
-**Status:** Implemented; awaiting iOS verification.
+**Status:** Complete and verified on iOS.
 
 ### Build
 
@@ -408,6 +408,10 @@ two-player ownership and following.
   requires entity format `1.21.80`; this pack retains its verified `1.21.0` format.
 - Movement animations continue to use `query.modified_move_speed`, so no separate
   mounted animation controller is needed for the initial implementation.
+
+### Verification
+
+- Riding and player control are verified on the target iOS client.
 
 ### Limitations
 
