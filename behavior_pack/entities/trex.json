@@ -190,6 +190,17 @@
         "minecraft:movement": {
           "value": 0.25
         },
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "crouching_skip_interact": true,
+          "family_types": ["player"],
+          "interact_text": "action.interact.ride.horse",
+          "seats": {
+            "position": [0.0, 2.3, 0.3]
+          }
+        },
+        "minecraft:input_ground_controlled": {},
+        "minecraft:behavior.player_ride_tamed": {},
         "minecraft:behavior.owner_hurt_by_target": {
           "priority": 2
         },
@@ -247,6 +258,11 @@
         "avoid_damage_blocks": true
       },
       "minecraft:jump.static": {},
+      "minecraft:variable_max_auto_step": {
+        "base_value": 1.5,
+        "controlled_value": 1.5,
+        "jump_prevented_value": 0.5625
+      },
       "minecraft:physics": {},
       "minecraft:pushable_by_entity": {},
       "minecraft:pushable_by_block": {},

@@ -362,7 +362,7 @@ two-player ownership and following.
 
 ## Milestone 5: Riding And Player Control
 
-**Status:** Planned.
+**Status:** Implemented; awaiting iOS verification.
 
 ### Build
 
@@ -395,6 +395,19 @@ two-player ownership and following.
 - Tune rider position and camera distance.
 - Test mounting with two players.
 - Verify unmounted combat still works after riding is added.
+
+### Implementation Notes
+
+- Riding, ground input, and `minecraft:behavior.player_ride_tamed` are part of the
+  active-tamed component group. Wild and sitting T-Rexes therefore cannot be mounted.
+- The single seat starts at `[0.0, 2.3, 0.3]`, above the hips and slightly behind the
+  model origin. Its final position requires visual tuning on iOS.
+- Automatic step height is 1.5 blocks during normal and rider-controlled movement;
+  jump-preventing blocks retain the vanilla `0.5625` limit.
+- No third-person camera radius override is included because that rideable seat field
+  requires entity format `1.21.80`; this pack retains its verified `1.21.0` format.
+- Movement animations continue to use `query.modified_move_speed`, so no separate
+  mounted animation controller is needed for the initial implementation.
 
 ### Limitations
 

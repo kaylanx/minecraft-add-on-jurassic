@@ -1,17 +1,17 @@
 # Jurassic T-Rex Add-On
 
-Milestone 4.3 fixes movement and following after a seated T-Rex is told to stand,
-while retaining the articulated sitting pose from Milestone 4.2.
+Milestone 5 makes a standing, tamed T-Rex rideable and controllable while retaining
+the taming, owner behavior, and custom sitting introduced in Milestone 4.
 
 ## Install On iOS
 
-1. Transfer `dist/jurassic_trex_milestone_4_3.mcaddon` to the iOS device.
+1. Transfer `dist/jurassic_trex_milestone_5.mcaddon` to the iOS device.
 2. In the Files app, open the file with Minecraft.
 3. Wait for Minecraft to report that both packs imported successfully. Separate
-   Milestone 4.3 `.mcpack` files are also provided if troubleshooting is needed.
+   Milestone 5 `.mcpack` files are also provided if troubleshooting is needed.
 4. Create a new world with cheats enabled.
-5. Activate **Jurassic T-Rex Behavior Pack (Milestone 4.3)** under Behavior Packs.
-6. Verify **Jurassic T-Rex Resource Pack (Milestone 4.3)** is active.
+5. Activate **Jurassic T-Rex Behavior Pack (Milestone 5)** under Behavior Packs.
+6. Verify **Jurassic T-Rex Resource Pack (Milestone 5)** is active.
 7. Deactivate earlier Jurassic packs because they use the same entity identifier.
 
 ## Test
@@ -48,6 +48,16 @@ Verify that:
 - Sitting prevents following, combat, and wandering until it is told to stand.
 - After standing, it resumes wandering and follows its owner again. Repeat the
   sit/stand cycle several times to verify movement is restored every time.
+- A wild T-Rex cannot be mounted.
+- A standing, tamed T-Rex offers the Ride action. Mount it, use touch movement to
+  steer and stop, then dismount.
+- A sitting T-Rex does not offer the Ride action. Stand it before mounting.
+- The rider sits above the hips without obvious model clipping, and third-person
+  visibility remains usable with the standard camera distance.
+- While ridden, it can climb full blocks and reasonable slopes without jumping.
+- After dismounting, following, owner defense, wandering, and melee combat still work.
+- With two players, only one rider can mount at a time. The current declarative family
+  filter does not guarantee owner-only mounting, so verify and record non-owner behavior.
 - Ownership and sitting state persist after saving and reopening the world.
 - It has the name `T-Rex` in command output and death messages.
 - A green and dark spawn egg named `Spawn T-Rex` is available in Creative mode.
@@ -78,7 +88,7 @@ Validate the source packs without creating archives:
 Create and validate both `.mcpack` files and the combined `.mcaddon`:
 
 ```sh
-./scripts/package.sh milestone_4_3
+./scripts/package.sh milestone_5
 ```
 
 The release name controls the generated filenames in `dist/`. Packaging preserves
