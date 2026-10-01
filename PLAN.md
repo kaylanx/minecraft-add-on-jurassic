@@ -423,7 +423,7 @@ two-player ownership and following.
 
 ## Milestone 6: Sounds, Natural Spawning, Balance, And Polish
 
-**Status:** Planned.
+**Status:** Implemented; iOS verification and final gameplay tuning pending.
 
 ### Build
 
@@ -471,14 +471,43 @@ two-player ownership and following.
 - Biome tags can be broader than exact biome identifiers.
 - Audio must be properly licensed and exported in a supported format.
 
+### Implementation Notes
+
+- Natural spawning uses the animal population pool, relative weight 2, and a herd
+  size of exactly one so the large predator remains a rare encounter.
+- Spawning is limited to grass-block surfaces in daylight in biomes carrying the
+  `jungle` or `swamp` tag. Testing must use newly generated chunks.
+- The established balance baseline remains 100 health, 14 melee damage, 0.25 base
+  movement, 24-block target acquisition, and a 1.5 melee reach multiplier. Further
+  changes require Survival testing on the target client rather than speculative
+  tuning.
+- Ambient calls occur every 12 to 30 seconds. Ambient, hurt, death, attack, and step
+  events map to original synthesized `.ogg` assets with slight pitch variation.
+- The sound effects contain no third-party recordings; their provenance is documented
+  beside the audio assets.
+- The finalized spawn egg uses an olive base and ochre overlay to match the T-Rex and
+  provide stronger contrast in the Creative inventory.
+- Pack versions are `1.5.1`; UUIDs and the conservative engine/entity formats remain
+  unchanged.
+- Sound assets are normalized for stronger playback. Event volumes range from 1.4 to
+  1.6, with footsteps raised to 1.4 so they remain audible during movement.
+- Loot tables and visual variants remain optional and were not added because they are
+  not required for the milestone's core gameplay.
+
+### Verification
+
+- Source validation and archive integrity are automated by the repository scripts.
+- Sound event behavior, biome eligibility, practical spawn rarity, population impact,
+  and all prior gameplay regressions remain unverified until tested on iOS.
+
 ## Known Bedrock Limitations
 
 1. Entity collision is a simple box and cannot match the snout and tail.
 2. Large-mob navigation is unreliable in narrow or heavily wooded terrain.
 3. Owner-only mounting is not represented cleanly by the rideable family filter.
 4. Ground riding does not automatically provide a custom attack control.
-5. Client animation and server damage are separate systems; delayed attack behavior
-   is used to synchronize them as closely as possible.
+5. Client animation and server damage are separate systems. Delayed attack behavior
+   remains disabled because it caused a pack-loading warning on the target iOS client.
 6. Natural spawning depends on population pools, nearby entities, valid surfaces,
    biome tags, and difficulty.
 7. Format versions affect schema validation. Newer versions may reject shorthand

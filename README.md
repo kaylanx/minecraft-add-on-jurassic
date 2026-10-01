@@ -1,17 +1,17 @@
 # Jurassic T-Rex Add-On
 
-Milestone 5 makes a standing, tamed T-Rex rideable and controllable while retaining
-the taming, owner behavior, and custom sitting introduced in Milestone 4.
+Milestone 6 adds custom sounds and rare natural spawning while retaining the combat,
+taming, sitting, and riding behavior from earlier milestones.
 
 ## Install On iOS
 
-1. Transfer `dist/jurassic_trex_milestone_5.mcaddon` to the iOS device.
+1. Transfer `dist/jurassic_trex_milestone_6.mcaddon` to the iOS device.
 2. In the Files app, open the file with Minecraft.
 3. Wait for Minecraft to report that both packs imported successfully. Separate
-   Milestone 5 `.mcpack` files are also provided if troubleshooting is needed.
+   Milestone 6 `.mcpack` files are also provided if troubleshooting is needed.
 4. Create a new world with cheats enabled.
-5. Activate **Jurassic T-Rex Behavior Pack (Milestone 5)** under Behavior Packs.
-6. Verify **Jurassic T-Rex Resource Pack (Milestone 5)** is active.
+5. Activate **Jurassic T-Rex Behavior Pack (Milestone 6)** under Behavior Packs.
+6. Verify **Jurassic T-Rex Resource Pack (Milestone 6)** is active.
 7. Deactivate earlier Jurassic packs because they use the same entity identifier.
 
 ## Test
@@ -34,6 +34,8 @@ Verify that:
 - It hunts nearby cows, pigs, sheep, chickens, and horses in any game mode.
 - It pursues targets and attacks when it reaches melee range.
 - Its melee attack deals 14 damage.
+- Ambient calls play periodically, and hurt, death, attack, and footstep sounds play
+  for their matching actions.
 - It retaliates when attacked.
 - Its 100 health and 60% knockback resistance make it difficult to fight.
 - Raw beef, porkchops, chicken, mutton, and rabbit each have a 25% chance to tame it.
@@ -60,8 +62,25 @@ Verify that:
   filter does not guarantee owner-only mounting, so verify and record non-owner behavior.
 - Ownership and sitting state persist after saving and reopening the world.
 - It has the name `T-Rex` in command output and death messages.
-- A green and dark spawn egg named `Spawn T-Rex` is available in Creative mode.
+- An olive and ochre spawn egg named `Spawn T-Rex` is available in Creative mode.
 - Saving and reopening the world preserves the entity.
+
+Test each sound definition directly near the player:
+
+```text
+/playsound mob.trex.ambient @s
+/playsound mob.trex.hurt @s
+/playsound mob.trex.death @s
+/playsound mob.trex.attack @s
+/playsound mob.trex.step @s
+```
+
+For natural spawning, create a new world or explore newly generated chunks. T-Rexes
+spawn on grass blocks in daylight in jungle- and swamp-tagged biomes. They use the
+animal population pool with relative weight 2 and a herd size of exactly one. Verify
+that encounters are rare, no T-Rexes appear in clearly ineligible biomes, and the
+local animal population is not overwhelmed. Spawn weight is relative to other valid
+entities rather than a direct percentage.
 
 The equivalent full animation commands are:
 
@@ -88,8 +107,12 @@ Validate the source packs without creating archives:
 Create and validate both `.mcpack` files and the combined `.mcaddon`:
 
 ```sh
-./scripts/package.sh milestone_5
+./scripts/package.sh milestone_6
 ```
 
 The release name controls the generated filenames in `dist/`. Packaging preserves
 the UUIDs in the manifests; increment manifest versions when preparing an update.
+
+The `.ogg` files under `resource_pack/sounds/entity/trex/` were generated for this
+project from synthesized waveforms and filtered noise. They contain no third-party
+recordings; provenance is recorded beside the files in `LICENSE.md`.

@@ -1,10 +1,10 @@
 {
   "format_version": 2,
   "header": {
-    "name": "Jurassic T-Rex Resource Pack (Milestone 5)",
-    "description": "Milestone 5 client resources for the rideable T-Rex",
+    "name": "Jurassic T-Rex Resource Pack (Milestone 6)",
+    "description": "Milestone 6 client resources with custom T-Rex sounds",
     "uuid": "f4de24c0-f9b3-48ce-9c8e-65e65886a1cb",
-    "version": [1, 4, 0],
+    "version": [1, 5, 1],
     "min_engine_version": [1, 21, 0]
   },
   "modules": [
@@ -12,7 +12,7 @@
       "description": "Jurassic T-Rex client resources",
       "type": "resources",
       "uuid": "03163bb4-2cee-495a-9d37-a87443a2c1e3",
-      "version": [1, 4, 0]
+      "version": [1, 5, 1]
     }
   ]
 }

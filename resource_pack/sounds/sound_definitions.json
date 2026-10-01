@@ -1,0 +1,35 @@
+{
+  "format_version": "1.14.0",
+  "sound_definitions": {
+    "mob.trex.ambient": {
+      "category": "hostile",
+      "sounds": [
+        "sounds/entity/trex/ambient"
+      ]
+    },
+    "mob.trex.hurt": {
+      "category": "hostile",
+      "sounds": [
+        "sounds/entity/trex/hurt"
+      ]
+    },
+    "mob.trex.death": {
+      "category": "hostile",
+      "sounds": [
+        "sounds/entity/trex/death"
+      ]
+    },
+    "mob.trex.attack": {
+      "category": "hostile",
+      "sounds": [
+        "sounds/entity/trex/attack"
+      ]
+    },
+    "mob.trex.step": {
+      "category": "hostile",
+      "sounds": [
+        "sounds/entity/trex/step"
+      ]
+    }
+  }
+}

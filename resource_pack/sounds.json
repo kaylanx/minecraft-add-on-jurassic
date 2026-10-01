@@ -1,0 +1,32 @@
+{
+  "entity_sounds": {
+    "entities": {
+      "jurassic:trex": {
+        "volume": 1.0,
+        "pitch": [0.94, 1.06],
+        "events": {
+          "ambient": {
+            "sound": "mob.trex.ambient",
+            "volume": 1.5
+          },
+          "hurt": {
+            "sound": "mob.trex.hurt",
+            "volume": 1.4
+          },
+          "death": {
+            "sound": "mob.trex.death",
+            "volume": 1.6
+          },
+          "attack": {
+            "sound": "mob.trex.attack",
+            "volume": 1.5
+          },
+          "step": {
+            "sound": "mob.trex.step",
+            "volume": 1.4
+          }
+        }
+      }
+    }
+  }
+}
