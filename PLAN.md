@@ -423,7 +423,7 @@ two-player ownership and following.
 
 ## Milestone 6: Sounds, Natural Spawning, Balance, And Polish
 
-**Status:** Implemented; iOS verification and final gameplay tuning pending.
+**Status:** Complete and verified on iOS.
 
 ### Build
 
@@ -497,8 +497,12 @@ two-player ownership and following.
 ### Verification
 
 - Source validation and archive integrity are automated by the repository scripts.
-- Sound event behavior, biome eligibility, practical spawn rarity, population impact,
-  and all prior gameplay regressions remain unverified until tested on iOS.
+- Custom sound events and rare natural spawning in eligible biomes are verified on
+  iOS.
+- Spawn frequency, herd size, population impact, and the established gameplay balance
+  are verified on iOS.
+- Taming, owner behavior, sitting, riding, persistence, and multiplayer ownership
+  remain functional in the Milestone 6 build.
 
 ## Known Bedrock Limitations
 
